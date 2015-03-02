@@ -1,6 +1,6 @@
 {
   "name": "google-auth",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A service component for Google OAuth 2.0.",
   "homepage": "https://github.com/mbykovskyy/google-auth",
   "author": "Maksym Bykovskyy",
