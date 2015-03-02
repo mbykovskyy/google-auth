@@ -1,0 +1,64 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../google-apis/google-client-api.html">
+
+<!--
+A component for Google OAuth 2.0.
+
+Example:
+
+      <google-auth clientId="apps.googleusercontent.com" scope="profile"></google-auth>
+
+@element google-auth
+@blurb A service component for Google OAuth 2.0
+@homepage http://mbykovskyy.github.io/google-auth
+@demo http://mbykovskyy.github.io/google-auth/demo.html
+-->
+<!--
+Fired when sucessfully authorized.
+
+@event authorized
+-->
+<!--
+Fired when authorization error occures.
+
+@event error
+-->
+<polymer-element name="google-auth" attributes="clientId scope cookiePolicy">
+  <template>
+    <google-client-api></google-client-api>
+  </template>
+  <script>
+    function authorizeCallback(result) {
+      this.fire(result.error ? 'error' : 'authorized', result);
+    };
+
+    Polymer({
+      /**
+       * Space-delimited list of scopes for the API.
+       *
+       * @attribute scope
+       * @type String
+       * @default profile
+       */
+      scope: 'profile',
+
+      /**
+       * Specifies session storage policy.
+       *
+       * @attribute cookiePolicy
+       * @type String
+       * @default single_host_origin
+       */
+      cookiePolicy: 'single_host_origin',
+
+      authorize: function() {
+        gapi.auth.signIn({
+          clientid: this.clientId,
+          scope: this.scope,
+          cookiepolicy: this.cookiePolicy,
+          callback: authorizeCallback.bind(this)
+        });
+      }
+    });
+  </script>
+</polymer-element>

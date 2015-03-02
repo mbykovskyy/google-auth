@@ -1,0 +1,7 @@
+{
+  "name": "google-auth#gh-pages",
+  "private": true,
+  "dependencies": {
+    "google-auth": "mbykovskyy/google-auth#master"
+  }
+}
