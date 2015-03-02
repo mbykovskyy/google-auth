@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Should Have Correct Defaults</title>
+  <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="../../polymer-test-tools/tools.html">
+  <script src="../../polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../google-auth.html">
+</head>
+<body>
+  <google-auth></google-auth>
+
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var auth = document.querySelector('google-auth');
+      assert.equal(auth.scope, 'profile');
+      assert.equal(auth.cookiePolicy, 'single_host_origin');
+      done();
+    });
+  </script>
+</body>
+</html>

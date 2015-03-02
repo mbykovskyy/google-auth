@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="google-auth.html">
+</head>
+<body unresolved>
+  <google-auth id="auth" clientId="" scope="profile"></google-auth>
+
+  <button id="button">Auth</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    var auth = document.getElementById('auth');
+
+    document.getElementById('button').addEventListener('click', function() {
+      auth.authorize();
+    });
+
+    auth.addEventListener('authorized', function(e) {
+      var output = document.getElementById('output');
+      output.innerHTML = JSON.stringify({
+        access_token: e.detail.access_token,
+        expires_in: e.detail.expires_in
+      }, null, 2);
+    });
+  </script>
+</body>
+</html>

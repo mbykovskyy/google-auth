@@ -1,0 +1,30 @@
+{
+  "name": "google-auth",
+  "version": "0.0.0",
+  "description": "A service component for Google OAuth 2.0.",
+  "homepage": "https://github.com/mbykovskyy/google-auth",
+  "author": "Maksym Bykovskyy",
+  "license": "MIT",
+  "main": "google-auth.html",
+  "keywords": [
+    "google-auth",
+    "web-component",
+    "web-components",
+    "polymer",
+    "authentication",
+    "authorization",
+    "oauth",
+    "oauth2"
+  ],
+  "ignore": [
+    "**/.*",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5",
+    "google-apis": "~0.4.3"
+  },
+  "devDependencies": {
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.5.5"
+  }
+}
