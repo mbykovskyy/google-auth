@@ -51,13 +51,20 @@ Fired when authorization error occures.
        */
       cookiePolicy: 'single_host_origin',
 
-      authorize: function() {
-        gapi.auth.signIn({
+      ready: function() {
+        // params have to be created outside authorize function since Google
+        // appears to hold on to the old instances resulting in multiple
+        // callbacks when authorize is called multiple times.
+        this.params = {
           clientid: this.clientId,
           scope: this.scope,
           cookiepolicy: this.cookiePolicy,
           callback: authorizeCallback.bind(this)
-        });
+        }
+      },
+
+      authorize: function() {
+        gapi.auth.signIn(this.params);
       }
     });
   </script>
